@@ -24,3 +24,5 @@ hs_err_pid*
 /.idea/
 /GroupProject/.settings/
 /bin/
+/classes/
+classes/
