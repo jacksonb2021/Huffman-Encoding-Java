@@ -33,21 +33,24 @@ public class HuffmanEncoder {
 
     }
 
-    private No
-
-
 
 
 
     private class Node{
         private Node left;
         private Node right;
-        private Tuple val;
-        public Node(Tuple val){
-            this.val = val;
+        private char character;
+        private int occurrences;
+        public Node(char character,int occurrences){
+            this.character = character;
+            this.occurrences=occurrences;
         }
-        public Tuple getVal(){
-            return val;
+
+        public char getCharacter(){
+            return character;
+        }
+        public int getOccurrences(){
+            return occurrences;
         }
         public Node left(){
             return left;
@@ -62,14 +65,7 @@ public class HuffmanEncoder {
             this.right = right;
         }
     }
-    private class Tuple{
-        public final char character;
-        public final int occurances;
-        public Tuple(char character, int occurances){
-            this.occurances = occurances;
-            this.character = character;
-        }
-    }
+
 
 
 }
