@@ -6,6 +6,9 @@ public class HuffmanEncoderTest {
 	public void testThing(){
 		HuffmanEncoder h = new HuffmanEncoder("This is my huffman string");
 		System.out.println(h.getMap());
+		for(HuffmanEncoder.Node n :h.getNodes()){
+			System.out.println(n.getEncoding());
+		}
 	}
 
 	@Test

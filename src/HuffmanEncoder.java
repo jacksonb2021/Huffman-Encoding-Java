@@ -12,6 +12,7 @@ public class HuffmanEncoder {
         phrase = phrase.trim();
         totalOccurances=0;
         map = new HashMap<>();
+        nodes = new ArrayList<>();
         //create frequencytable
         for(int i=0;i<phrase.length();i++){
             char character = phrase.charAt(i);
@@ -39,7 +40,7 @@ public class HuffmanEncoder {
     }
 
     private void constructTree(){
-        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparing(Node::getOccurrences));
+        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(Node::getOccurrences),Collections.reverseOrder());
         for(Map.Entry<Character,Integer> s: map.entrySet()){
             Node n = new Node(s.getKey(),s.getValue());
             pq.add(n);
@@ -71,7 +72,7 @@ public class HuffmanEncoder {
         setEncoding(node.right(), rightPath); // traverse right branch recursively
     }
 
-    public String findEncoding(char c){
+    public String findCharEncoding(char c){
         for(Node n : nodes){
             if(n.getCharacter()==c){
                 return n.getEncoding();
@@ -105,7 +106,7 @@ public class HuffmanEncoder {
 
 
 
-    private class Node{
+    class Node{
         private String encoding;
         private Node left;
         private Node right;
