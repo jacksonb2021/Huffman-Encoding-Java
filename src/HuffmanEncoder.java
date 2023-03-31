@@ -69,7 +69,7 @@ public class HuffmanEncoder {
         leftPath.add(0);
         ArrayList<Integer> rightPath = new ArrayList<>(path);
         rightPath.add(1);
-        setEncoding(node.left(), leftPath); 
+        setEncoding(node.left(), leftPath);
         setEncoding(node.right(), rightPath);
     }
 
