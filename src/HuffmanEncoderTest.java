@@ -4,10 +4,10 @@ public class HuffmanEncoderTest {
 
 	@Test
 	public void testThing(){
-		HuffmanEncoder h = new HuffmanEncoder("This is my huffman string");
+		HuffmanEncoder h = new HuffmanEncoder("hello");
 		System.out.println(h.getMap());
 		for(HuffmanEncoder.Node n :h.getNodes()){
-			System.out.println(n.getEncoding());
+			System.out.println("node: "+n.getCharacter()+" encoding: "+n.getEncoding());
 		}
 	}
 

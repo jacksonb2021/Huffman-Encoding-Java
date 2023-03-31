@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.PriorityQueue;
 import java.util.*;
 public class HuffmanEncoder {
-    private HashMap<Character,Integer> map;
+    private HashMap<String,Integer> map;
     private int totalOccurances;
     private Node root;
     private ArrayList<Node> nodes;
@@ -15,7 +15,7 @@ public class HuffmanEncoder {
         nodes = new ArrayList<>();
         //create frequencytable
         for(int i=0;i<phrase.length();i++){
-            char character = phrase.charAt(i);
+            String character = ""+phrase.charAt(i);
             if(map.containsKey(character)){
                 map.put(character,map.get(character)+1);
             } else {
@@ -31,7 +31,7 @@ public class HuffmanEncoder {
     public Node getRoot(){
         return root;
     }
-    public HashMap<Character,Integer> getMap(){
+    public HashMap<String,Integer> getMap(){
         return map;
     }
 
@@ -40,8 +40,8 @@ public class HuffmanEncoder {
     }
 
     private void constructTree(){
-        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(Node::getOccurrences),Collections.reverseOrder());
-        for(Map.Entry<Character,Integer> s: map.entrySet()){
+        PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(Node::getOccurrences));
+        for(Map.Entry<String,Integer> s: map.entrySet()){
             Node n = new Node(s.getKey(),s.getValue());
             pq.add(n);
             nodes.add(n);
@@ -56,6 +56,7 @@ public class HuffmanEncoder {
             pq.add(parent);
         }
         root = pq.poll();
+        System.out.println("nodes: "+nodes);
 
     }
 
@@ -63,16 +64,16 @@ public class HuffmanEncoder {
         if (node == null) {
             return; // base case: end of tree
         }
-        node.setEncoding(path.toString()); // set the encoding for the current node
-        ArrayList<Integer> leftPath = new ArrayList<>(path); // create copy of current path for left branch
-        leftPath.add(0); // add 0 to path for left branch
-        ArrayList<Integer> rightPath = new ArrayList<>(path); // create copy of current path for right branch
-        rightPath.add(1); // add 1 to path for right branch
-        setEncoding(node.left(), leftPath); // traverse left branch recursively
-        setEncoding(node.right(), rightPath); // traverse right branch recursively
+        node.setEncoding(path.toString());
+        ArrayList<Integer> leftPath = new ArrayList<>(path);
+        leftPath.add(0);
+        ArrayList<Integer> rightPath = new ArrayList<>(path);
+        rightPath.add(1);
+        setEncoding(node.left(), leftPath); 
+        setEncoding(node.right(), rightPath);
     }
 
-    public String findCharEncoding(char c){
+    public String findCharEncoding(String c){
         for(Node n : nodes){
             if(n.getCharacter()==c){
                 return n.getEncoding();
@@ -84,23 +85,7 @@ public class HuffmanEncoder {
     public ArrayList<Node> getNodes(){
         return nodes;
     }
-//    private ArrayList<Integer> findPath(Node node, char character, ArrayList<Integer> path) {
-//        if (node == null) {
-//            return null; // base case: node not found
-//        }
-//        if (node.getCharacter() == character) {
-//            return path; // base case: node found
-//        }
-//        ArrayList<Integer> leftPath = new ArrayList<>(path); // create copy of current path for left branch
-//        leftPath.add(0); // add 0 to path for left branch
-//        ArrayList<Integer> rightPath = new ArrayList<>(path); // create copy of current path for right branch
-//        rightPath.add(1); // add 1 to path for right branch
-//        ArrayList<Integer> result = findPath(node.left(), character, leftPath); // search left branch recursively
-//        if (result != null) {
-//            return result; // node found in left branch
-//        }
-//        return findPath(node.right(), character, rightPath); // search right branch recursively
-//    }
+
 
 
 
@@ -110,9 +95,9 @@ public class HuffmanEncoder {
         private String encoding;
         private Node left;
         private Node right;
-        private char character;
+        private String character;
         private int occurrences;
-        public Node(Character character, int occurrences){
+        public Node(String character, int occurrences){
             this.character = character;
             this.occurrences=occurrences;
         }
@@ -123,7 +108,7 @@ public class HuffmanEncoder {
             return encoding;
         }
 
-        public char getCharacter(){
+        public String getCharacter(){
             return character;
         }
         public int getOccurrences(){
