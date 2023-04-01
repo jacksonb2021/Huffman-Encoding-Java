@@ -19,9 +19,6 @@ public class HuffmanEncoderTest {
 	public void getMap() {
 	}
 
-	@Test
-	public void getTotalOccurances() {
-	}
 
 	@Test
 	public void setEncoding() {
