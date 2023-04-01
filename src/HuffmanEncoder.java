@@ -4,13 +4,11 @@ import java.util.PriorityQueue;
 import java.util.*;
 public class HuffmanEncoder {
     private HashMap<String,Integer> map;
-    private int totalOccurances;
     private Node root;
     private ArrayList<Node> nodes;
 
     public HuffmanEncoder(String phrase){
         phrase = phrase.trim();
-        totalOccurances=0;
         map = new HashMap<>();
         nodes = new ArrayList<>();
         //create frequencytable
@@ -22,7 +20,6 @@ public class HuffmanEncoder {
                 map.put(character,1);
 
             }
-            totalOccurances++;
         }
         constructTree();
         setEncoding(root, new ArrayList<>());
@@ -35,9 +32,6 @@ public class HuffmanEncoder {
         return map;
     }
 
-    public int getTotalOccurances(){
-        return totalOccurances;
-    }
 
     private void constructTree(){
         PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(Node::getOccurrences));
@@ -95,8 +89,8 @@ public class HuffmanEncoder {
         private String encoding;
         private Node left;
         private Node right;
-        private String character;
-        private int occurrences;
+        private final String character;
+        private final int occurrences;
         public Node(String character, int occurrences){
             this.character = character;
             this.occurrences=occurrences;
