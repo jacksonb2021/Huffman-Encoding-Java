@@ -7,8 +7,15 @@ public class HuffmanEncoderTest {
 		HuffmanEncoder h = new HuffmanEncoder("hello");
 		System.out.println(h.getMap());
 		for(HuffmanEncoder.Node n :h.getNodes()){
-			System.out.println("node: "+n.getCharacter()+" encoding: "+n.getEncoding());
+			System.out.println(n);
 		}
+		String str = "Hello my name is Jackson Burns.";
+		System.out.println(str.length());
+		HuffmanEncoder j = new HuffmanEncoder(str);
+		for(HuffmanEncoder.Node n :j.getNodes()){
+			System.out.println(n);
+		}
+
 	}
 
 	@Test
