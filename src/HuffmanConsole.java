@@ -29,5 +29,9 @@ public class HuffmanConsole {
         System.out.println("Difference: " + (h.getEncodingStandardSize() - h.getHuffmanEncodingSize()) + " bits");
         double percent = (h.getHuffmanEncodingSize() / (double) h.getEncodingStandardSize()) * 100;
         System.out.println("Percent Compressed: " + Math.round(percent * 100.0) / 100.0+ "%");
+        System.out.println();
+        System.out.println("Standard encoding:\n" + h.standardEncoding());
+        System.out.println("Huffman encoding:\n" + h.encodedString());
+
     }
 }

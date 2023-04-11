@@ -2,6 +2,12 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.PriorityQueue;
 import java.util.*;
+
+
+/**
+ * this class is used to encode a string using the Huffman algorithm. this ensures a lossless compression of a string
+ * by encoding characters based on their frequency, with the most frequent characters being encoded with the fewest bits
+ */
 public class HuffmanEncoder {
     private HashMap<String,Integer> map;
     private String phrase;
@@ -45,6 +51,38 @@ public class HuffmanEncoder {
     public int getEncodingStandardSize(){
         return phrase.length()*8;
 
+    }
+
+
+    /**
+     * This method returns a string of the huffman encoding of the phrase
+     * @return - String of the encoding
+     */
+    public String encodedString(){
+        String encoded = "";
+        for(int i=0;i<phrase.length();i++){
+            String character = ""+phrase.charAt(i);
+            for(Node n : nodes){
+                if(n.getCharacter().equals(character)){
+                    encoded+=n.getEncoding()+" ";
+                }
+            }
+        }
+        return encoded;
+    }
+
+
+    /**
+     * This method returns a string of the standard encoding of the phrase using 8 bit character lengths
+     * @return - String of the encoding
+     */
+    public String standardEncoding(){
+        String encoded = "";
+        byte[] bytes = phrase.getBytes();
+        for (byte b : bytes) {
+            encoded+=(Integer.toBinaryString(b) + " ");
+        }
+        return encoded;
     }
 
 
@@ -118,8 +156,8 @@ public class HuffmanEncoder {
 
 
     /**
-     *
-     * @return
+     * this method returns an arraylist of the nodes in the tree
+     * @return - ArrayList of Node objects
      */
     public ArrayList<Node> getNodes(){
         return nodes;
@@ -148,7 +186,6 @@ public class HuffmanEncoder {
         public String getEncoding(){
             return encoding;
         }
-
         public String getCharacter(){
             return character;
         }
