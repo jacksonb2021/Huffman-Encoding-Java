@@ -27,14 +27,11 @@ public class HuffmanEncoder {
         setEncoding(root, new ArrayList<>());
     }
 
-    public Node getRoot(){
-        return root;
-    }
 
 
     /**
      * This method returns the hashmap of the characters and their freq
-     * @return
+     * @return - Hashmap<String, Integer>
      */
     public HashMap<String,Integer> getMap(){
         return map;
@@ -42,7 +39,7 @@ public class HuffmanEncoder {
 
 
     /**
-     * This method returns the length of the standard encoding using 8 bit character lengths
+     * This method returns the bit length of the standard encoding using 8 bit character lengths
      * @return - int of the length
      */
     public int getEncodingStandardSize(){
@@ -52,7 +49,7 @@ public class HuffmanEncoder {
 
 
     /**
-     * This method returns the length of the huffman encoded string
+     * This method returns the bit length of the huffman encoded string
      * @return - int of the length
      */
     public int getHuffmanEncodingSize(){

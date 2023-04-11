@@ -9,7 +9,12 @@
 //		for(HuffmanEncoder.Node n :h.getNodes()){
 //			System.out.println(n);
 //		}
-//
+//		String str = "Hello my name is Jackson Burns.";
+//		System.out.println(str.length());
+//		HuffmanEncoder j = new HuffmanEncoder(str);
+//		for(HuffmanEncoder.Node n :j.getNodes()){
+//			System.out.println(n);
+//		}
 //
 //	}
 //
