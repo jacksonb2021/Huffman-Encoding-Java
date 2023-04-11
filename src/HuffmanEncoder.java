@@ -72,7 +72,7 @@ public class HuffmanEncoder {
      * @param node - Node object storing the character, encoding, children, and frequency
      * @param path - ArrayList of Integers representing the path to the node/current encoding
      */
-    public void setEncoding(Node node, ArrayList<Integer> path) {
+    private void setEncoding(Node node, ArrayList<Integer> path) {
         if (node == null) {
             return; // base case: end of tree
         }
