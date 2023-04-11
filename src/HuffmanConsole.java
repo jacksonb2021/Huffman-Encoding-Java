@@ -21,5 +21,13 @@ public class HuffmanConsole {
         for(HuffmanEncoder.Node n : nodes){
             System.out.println(n.toString());
         }
+
+
+        System.out.println("\nSize comparison:");
+        System.out.println("Standard encoding: " + h.getEncodingStandardSize() + " bits");
+        System.out.println("Huffman encoding: " + h.getHuffmanEncodingSize() + " bits");
+        System.out.println("Difference: " + (h.getEncodingStandardSize() - h.getHuffmanEncodingSize()) + " bits");
+        double percent = (h.getHuffmanEncodingSize() / (double) h.getEncodingStandardSize()) * 100;
+        System.out.println("Percent Compressed: " + Math.round(percent * 100.0) / 100.0+ "%");
     }
 }

@@ -4,11 +4,13 @@ import java.util.PriorityQueue;
 import java.util.*;
 public class HuffmanEncoder {
     private HashMap<String,Integer> map;
+    private String phrase;
     private Node root;
     private ArrayList<Node> nodes;
 
     public HuffmanEncoder(String phrase){
         phrase = phrase.trim();
+        this.phrase = phrase;
         map = new HashMap<>();
         nodes = new ArrayList<>();
         //create frequencytable as a hashmap
@@ -36,6 +38,30 @@ public class HuffmanEncoder {
      */
     public HashMap<String,Integer> getMap(){
         return map;
+    }
+
+
+    /**
+     * This method returns the length of the standard encoding using 8 bit character lengths
+     * @return - int of the length
+     */
+    public int getEncodingStandardSize(){
+        return phrase.length()*8;
+
+    }
+
+
+    /**
+     * This method returns the length of the standard encoding using 8 bit character lengths
+     * @return - int of the length
+     */
+    public int getHuffmanEncodingSize(){
+        int size = 0;
+        for (Node n : nodes){
+            size+=n.getOccurrences()*n.getEncoding().length();
+        }
+        return size;
+
     }
 
 
