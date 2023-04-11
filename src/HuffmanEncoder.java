@@ -52,7 +52,7 @@ public class HuffmanEncoder {
 
 
     /**
-     * This method returns the length of the standard encoding using 8 bit character lengths
+     * This method returns the length of the huffman encoded string
      * @return - int of the length
      */
     public int getHuffmanEncodingSize(){
